@@ -311,67 +311,6 @@
         </div>
       );
 
-      const SearchMock = () => {
-        const [tab, setTab] = React.useState('flight');
-        const chip = (t) => (
-          <button onClick={() => setTab(t)} className={`px-3 py-1 rounded-full text-sm border ${tab===t? 'bg-rt-500 text-white border-rt-500' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'}`}>{t==='flight'?'航空券':'ホテル'}</button>
-        );
-        return (
-          <section id="search" className="py-16 sm:py-20 bg-white">
-            <Container>
-              <SectionTitle kicker="検索結果モック" title="航空券・ホテルの横断検索UI（参考イメージ）" subtitle="競合BTMの使い勝手を踏襲しつつ、NEWTらしいシンプルで見やすい設計" />
-              <div className="mt-6 flex items-center gap-3">
-                {chip('flight')}
-                {chip('hotel')}
-                <div className="ml-auto flex items-center gap-2 text-xs text-slate-600">
-                  <span className="hidden sm:inline">並び替え:</span>
-                  <button className="px-2 py-1 rounded bg-slate-100">料金が安い順</button>
-                  <button className="px-2 py-1 rounded hover:bg-slate-100">最短所要</button>
-                </div>
-              </div>
-
-              {tab==='flight' ? (
-                <div className="mt-6 rounded-xl border border-slate-200 bg-white shadow-card overflow-hidden">
-                  <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center gap-3 text-sm">
-                    <span className="font-semibold">HND → CTS</span>
-                    <span className="text-slate-500">2025/09/12・大人1名・経済席</span>
-                    <span className="ml-auto inline-flex items-center rounded-md bg-rt-100 text-rt-700 px-2 py-0.5 text-xs">ポリシー準拠</span>
-                  </div>
-                  <div className="px-4">
-                    {[
-                      ['ANA','ANA2451','06:50','08:35','普通席',12510,41510],
-                      ['SNA','SNA051','06:50','08:35','普通席',14120,39220],
-                      ['JAL','JAL687','08:00','09:50','普通席',13940,39140],
-                      ['JAL','JAL689','09:55','11:40','普通席',14120,39410],
-                      ['SNA','SNA055','10:00','11:50','普通席',12510,41510],
-                    ].map(([carrier, code, d, a, seat, disc, flex]) => (
-                      <FlightRow key={code} carrier={carrier} code={code} depart={d} arrive={a} seat={seat} discFare={disc} flexFare={flex} />
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-6 rounded-xl border border-slate-200 bg-white shadow-card overflow-hidden">
-                  <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center gap-3 text-sm">
-                    <span className="font-semibold">札幌（市内中心部）</span>
-                    <span className="text-slate-500">2025/09/12 - 09/13・1室1名</span>
-                    <span className="ml-auto inline-flex items-center rounded-md bg-rt-100 text-rt-700 px-2 py-0.5 text-xs">上限: ¥15,000/泊</span>
-                  </div>
-                  <div className="px-4">
-                    {[
-                      ['札幌駅前ビジネスホテル','札幌駅徒歩3分',11800,3.9,'iamges/photo1.jpg'],
-                      ['すすきのシティホテル','中心部・地下鉄1分',10400,4.2,'iamges/photo2.jpg'],
-                      ['大通パークサイド','大通公園そば',12750,4.1,'iamges/photo3.jpg'],
-                      ['新札幌グリーンホテル','新札幌',8800,3.7,'iamges/photo4.jpg'],
-                    ].map(([name, area, price, rating, image], i) => (
-                      <HotelRow key={i} name={name} area={area} price={price} rating={rating} image={image} />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </Container>
-          </section>
-        );
-      };
 
       const Benefits = () => {
         const benefits = [
@@ -569,7 +508,6 @@
           <NavBar />
           <Hero />
           <Overview />
-          <SearchMock />
           <Features />
           <Benefits />
           <DashboardMock />
